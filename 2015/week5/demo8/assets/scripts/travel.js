@@ -2,6 +2,21 @@
 function travelNotes() {
   "use strict";
 
+  $('.remove-all-notes').hide();
+
+  function removeNote(event)
+  {
+    event.preventDefault();
+    var self = this;
+    $(this.parentElement).fadeOut("slow", function()
+      {
+        self.parentElement.remove();
+        if($('.note-output p').length == 0)
+          $('.remove-all-notes').fadeOut("slow", $('.remove-all-notes').hide);
+
+      });
+  }
+
   //manage input field and new note output
   function createNote() {
     //object for wrapper html for note
@@ -12,6 +27,11 @@ function travelNotes() {
     if ($note_text.val() !== "") {
     //set content for note
     $note.html($note_text.val());
+
+    var removeButton = $("<a href='' class='remove-note'>X</a>");
+    removeButton.on("click", removeNote);
+
+    $note.append(removeButton);
     //hide new note to setup fadeIn...
     $note.hide();
     //append note text to note-output
@@ -19,11 +39,23 @@ function travelNotes() {
     //fadeIn hidden new note
     $note.fadeIn("slow");
     $note_text.val("");
+
+    $('.remove-all-notes').show();
     }
   }
 
+  function removeAllNotes()
+  {
+    $('.note-output p').fadeOut("slow", $(".note-output p").remove);
+    $('.remove-all-notes').fadeOut("slow", $(".remove-all-notes").hide);
+  }
+
   //handle user event for `add` button click
-  $(".note-input button").on("click", function(e) {
+  $(".remove-all-notes").on("click", function(e) {
+    removeAllNotes();
+  });
+
+  $(".note-input>button").on("click", function(e) {
     createNote();
   });
 

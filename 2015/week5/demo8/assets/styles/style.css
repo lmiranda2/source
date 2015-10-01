@@ -30,23 +30,37 @@ main {
 }
 /* input field for note */
 .note-input input {
-  width: 40%;
+  width: 70%;
+  min-height: 20px;
 }
 /* add button for note */
 .note-input button {
-  padding: 2px;
+  padding: 0;
   margin-left: 5px;
-  border-radius: 0;
-  border: 1px solid #dedede;
+  margin-right: 5px;
+  border-radius: 3px;
+  border: 1px solid #7A9BCC;
   cursor: pointer;
+  width: 25%;
+  min-height: 25px;
+  float:right;
+  background-color: #99C2FF;
 }
+
 /* even note paragraph output */
-.note-output p:nth-child(even) {
-  background-color: #ccc;
+.note-output p:nth-child(even) {  
+  //background-color: #ccc;
 }
 /* odd note paragraph output */
 .note-output p:nth-child(odd) {
-  background-color: #eee;
+  //background-color: #eee;
+}
+.note-output p{
+  border-left: 3px solid #99C2FF;
+  border-bottom: 2px solid #99C2FF;
+  word-wrap: normal;
+  padding-left: 5px;
+  padding-bottom: 3px;
 }
 /* site footer */
 footer {
@@ -56,4 +70,25 @@ footer {
 /* site footer paragraph */
 footer p {
   font-size: 0.8em;
+}
+
+.remove-note{
+  float: right;
+  text-decoration : none;
+  color: #FF8080;
+}
+.remove-note:link, .remove-note:visited {
+    color: #FF8080;
+}
+
+.remove-all-notes{
+  margin-top: 15px;
+  background-color: #FF8080;
+  padding: 0;
+  margin-left: 3px;
+  border-radius: 3px;
+  border: 1px solid #CC6666;
+  cursor: pointer;
+  width: 25%;
+  min-height: 25px;
 }
